@@ -2,6 +2,6 @@
 
 public class BadResponse
 {
-    public required int StatusCode { get; set; }
-    public required object ExceptionDto { get; set; }
+    public required int StatusCode { get; init; }
+    public required object ExceptionDto { get; init; }
 }

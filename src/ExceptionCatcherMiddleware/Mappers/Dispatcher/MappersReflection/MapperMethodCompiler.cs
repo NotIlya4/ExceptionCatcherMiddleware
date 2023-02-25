@@ -8,7 +8,7 @@ namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
 internal delegate BadResponse CompiledMapperMethod(object mapperInstance, Exception exception);
 internal class MapperMethodCompiler
 {
-    public static CompiledMapperMethod CompileMapperMethod(Type mapperType)
+    public static Func<object, Exception, BadResponse> CompileMapperMethod(Type mapperType)
     {
         MethodInfo methodInfo = mapperType.GetMethod(nameof(IExceptionMapper<Exception>.Map)) 
                                 ?? throw new TypeValidationException(mapperType, $"Map method not found");;
@@ -23,7 +23,7 @@ internal class MapperMethodCompiler
             methodInfo,
             Expression.Convert(passedException, argumentExceptionType));
 
-        Expression<CompiledMapperMethod> delegateExpression = Expression.Lambda<CompiledMapperMethod>(
+        Expression<Func<object, Exception, BadResponse>> delegateExpression = Expression.Lambda<Func<object, Exception, BadResponse>>(
             call,
             thisArgument,
             passedException);

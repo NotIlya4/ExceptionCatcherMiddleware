@@ -9,9 +9,9 @@ internal class ReflectionBundle
 {
     public Type MapperType { get; }
     public Type ExceptionTypeThatMapperMaps { get; }
-    public CompiledMapperMethod CompiledMapperMethod => _lazyCompiledMapperMethodProvider.Value;
+    public Func<object, Exception, BadResponse> CompiledMapperMethod => _lazyCompiledMapperMethodProvider.Value;
 
-    private readonly Lazy<CompiledMapperMethod> _lazyCompiledMapperMethodProvider; 
+    private readonly Lazy<Func<object, Exception, BadResponse>> _lazyCompiledMapperMethodProvider; 
 
     public ReflectionBundle(Type mapperType)
     {
@@ -41,7 +41,7 @@ internal class ReflectionBundle
 
         MapperType = mapperType;
         ExceptionTypeThatMapperMaps = paramterType;
-        _lazyCompiledMapperMethodProvider = new Lazy<CompiledMapperMethod>(
+        _lazyCompiledMapperMethodProvider = new Lazy<Func<object, Exception, BadResponse>>(
             () => MapperMethodCompiler.CompileMapperMethod(mapperType), true);
     }
 }

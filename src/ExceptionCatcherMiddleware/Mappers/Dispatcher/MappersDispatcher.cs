@@ -19,26 +19,17 @@ internal class MappersDispatcher
     
     public BadResponse Map(Exception exception)
     {
-        Type? exceptionType = exception.GetType();
-        ReflectionBundle? reflectionBundle = null;
-        
-        while (exceptionType is not null)
-        {
-            reflectionBundle = _reflectionBundlesProvider.Get(exceptionType);
-            if (reflectionBundle is not null)
-            {
-                break;
-            }
-            exceptionType = exceptionType.BaseType;
-        }
+        ReflectionBundle? reflectionBundle = 
+            _reflectionBundlesProvider.GetByFirstAvailableParent(exception.GetType());
 
         if (reflectionBundle is null)
         {
-            throw new MappersDispatchingException(
-                $"Not found reflection bundle for all parents of exception: {exception.GetType().FullName}");
+            throw new MapperNotProvidedException(exception.GetType());
         }
         
         object mapperInstance = _mapperInstanceProvider.GetMapperInstanceByType(reflectionBundle.MapperType);
-        return reflectionBundle.CompiledMapperMethod(mapperInstance, exception);
+        Func<object, Exception, BadResponse> compiledMapMethod = reflectionBundle.CompiledMapperMethod;
+        
+        return compiledMapMethod(mapperInstance, exception);
     }
 }
