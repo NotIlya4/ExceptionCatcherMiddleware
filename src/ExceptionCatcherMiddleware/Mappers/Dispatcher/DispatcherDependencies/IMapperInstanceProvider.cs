@@ -2,5 +2,5 @@
 
 internal interface IMapperInstanceProvider
 {
-    public object GetMapperInstanceByType(Type mapperInstanceType);
+    public object? GetMapperInstanceByType(Type mapperInstanceType);
 }

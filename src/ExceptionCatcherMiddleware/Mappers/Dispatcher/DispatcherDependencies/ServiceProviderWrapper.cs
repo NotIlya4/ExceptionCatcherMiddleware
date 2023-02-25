@@ -11,8 +11,8 @@ internal class ServiceProviderWrapper : IMapperInstanceProvider
         _serviceProvider = serviceProvider;
     }
     
-    public object GetMapperInstanceByType(Type mapperInstanceType)
+    public object? GetMapperInstanceByType(Type mapperInstanceType)
     {
-        return _serviceProvider.GetRequiredService(mapperInstanceType);
+        return _serviceProvider.GetService(mapperInstanceType);
     }
 }

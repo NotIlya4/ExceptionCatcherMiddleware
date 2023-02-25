@@ -24,10 +24,18 @@ internal class MappersDispatcher
 
         if (reflectionBundle is null)
         {
-            throw new MapperNotProvidedException(exception.GetType());
+            throw new MappingException($"Mapper not found for {exception.GetType().FullName} and all its parents");
         }
         
-        object mapperInstance = _mapperInstanceProvider.GetMapperInstanceByType(reflectionBundle.MapperType);
+        object? mapperInstance = _mapperInstanceProvider.GetMapperInstanceByType(reflectionBundle.MapperType);
+        
+        if (mapperInstance is null)
+        {
+            throw new MappingException(
+                $"Reflection bundle for {reflectionBundle.ExceptionTypeThatMapperMaps
+                    .FullName} exists but mapper instance for {reflectionBundle.MapperType.FullName} doesn't");
+        }
+        
         Func<object, Exception, BadResponse> compiledMapMethod = reflectionBundle.CompiledMapperMethod;
         
         return compiledMapMethod(mapperInstance, exception);
