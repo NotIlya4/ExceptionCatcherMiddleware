@@ -59,12 +59,24 @@ public class ReflectionBundlesManagerTests
     }
     
     [Test]
-    public void GetByFirstAvailableParent_BundleExistsForProvidedExceptionParentType_ReturnParentBundle()
+    [TestCase(typeof(ArgumentException))]
+    [TestCase(typeof(ArgumentOutOfRangeException))]
+    public void GetByFirstAvailableParent_BundleExistsForProvidedExceptionParentType_ReturnParentBundle(Type type)
     {
         ReflectionBundlesManager manager = new(_exceptionReflectionBundle.Object);
 
-        IReflectionBundle? result = manager.GetByFirstAvailableParent(typeof(ArgumentException));
+        IReflectionBundle? result = manager.GetByFirstAvailableParent(type);
         
         Assert.That(result, Is.EqualTo(_exceptionReflectionBundle.Object));
+    }
+
+    [Test]
+    public void GetByFirstAvailableParent_BundleDoesNotExistNeitherForProvidedTypeNorForItParents_ReturnNull()
+    {
+        ReflectionBundlesManager manager = new(_exceptionReflectionBundle.Object);
+        
+        IReflectionBundle? result = manager.GetByFirstAvailableParent(typeof(object));
+        
+        Assert.That(result, Is.EqualTo(null));
     }
 }
