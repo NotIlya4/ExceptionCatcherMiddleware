@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionCatcherMiddleware", "ExceptionCatcherMiddleware\ExceptionCatcherMiddleware.csproj", "{B275AE55-213E-4EB2-AB85-B8816D876D9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionCatcherMiddleware.UnitTests", "ExceptionCatcherMiddleware.UnitTests\ExceptionCatcherMiddleware.UnitTests.csproj", "{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B275AE55-213E-4EB2-AB85-B8816D876D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B275AE55-213E-4EB2-AB85-B8816D876D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B275AE55-213E-4EB2-AB85-B8816D876D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
