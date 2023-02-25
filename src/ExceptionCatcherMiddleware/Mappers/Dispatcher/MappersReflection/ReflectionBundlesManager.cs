@@ -28,16 +28,19 @@ internal class ReflectionBundlesManager : IReflectionBundlesProvider
         return _dictionary.GetValueOrDefault(exceptionType);
     }
 
-    public ReflectionBundle GetDefault()
+    public ReflectionBundle? GetByFirstAvailableParent(Type? exceptionType)
     {
-        ReflectionBundle? defaultMapperType = Get(typeof(Exception));
-
-        if (defaultMapperType is null)
+        while (exceptionType is not null)
         {
-            throw new Exception("Mapper type with Exception didn't find");
+            var reflectionBundle = Get(exceptionType);
+            if (reflectionBundle is not null)
+            {
+                return reflectionBundle;
+            }
+            exceptionType = exceptionType.BaseType;
         }
 
-        return defaultMapperType;
+        return null;
     }
 
     public ICollection<ReflectionBundle> GetAllMapperTypes()
@@ -49,7 +52,7 @@ internal class ReflectionBundlesManager : IReflectionBundlesProvider
     {
         foreach (ReflectionBundle mapperType in _dictionary.Values)
         {
-            CompiledMapperMethod compiledMapperMethod = mapperType.CompiledMapperMethod;
+            var compiledMapperMethod = mapperType.CompiledMapperMethod;
         }
     }
 }
