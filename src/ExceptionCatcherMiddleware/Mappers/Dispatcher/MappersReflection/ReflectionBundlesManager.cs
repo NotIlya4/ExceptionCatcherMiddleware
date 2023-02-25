@@ -5,9 +5,9 @@ namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
 
 internal class ReflectionBundlesManager : IReflectionBundlesProvider
 {
-    private readonly Dictionary<Type, ReflectionBundle> _dictionary = new();
+    private readonly Dictionary<Type, IReflectionBundle> _dictionary = new();
 
-    public ReflectionBundlesManager(ReflectionBundle defaultReflectionBundle)
+    public ReflectionBundlesManager(IReflectionBundle defaultReflectionBundle)
     {
         if (defaultReflectionBundle.ExceptionTypeThatMapperMaps != typeof(Exception))
         {
@@ -18,17 +18,17 @@ internal class ReflectionBundlesManager : IReflectionBundlesProvider
         Set(defaultReflectionBundle);
     }
 
-    public void Set(ReflectionBundle reflectionBundle)
+    public void Set(IReflectionBundle reflectionBundle)
     {
         _dictionary[reflectionBundle.ExceptionTypeThatMapperMaps] = reflectionBundle;
     }
 
-    public ReflectionBundle? Get(Type exceptionType)
+    public IReflectionBundle? Get(Type exceptionType)
     {
         return _dictionary.GetValueOrDefault(exceptionType);
     }
 
-    public ReflectionBundle? GetByFirstAvailableParent(Type? exceptionType)
+    public IReflectionBundle? GetByFirstAvailableParent(Type? exceptionType)
     {
         while (exceptionType is not null)
         {
@@ -43,14 +43,14 @@ internal class ReflectionBundlesManager : IReflectionBundlesProvider
         return null;
     }
 
-    public ICollection<ReflectionBundle> GetAllMapperTypes()
+    public ICollection<IReflectionBundle> GetAllMapperTypes()
     {
         return _dictionary.Values;
     }
 
     public void CompileAllMappersMethods()
     {
-        foreach (ReflectionBundle mapperType in _dictionary.Values)
+        foreach (IReflectionBundle mapperType in _dictionary.Values)
         {
             var compiledMapperMethod = mapperType.CompiledMapperMethod;
         }

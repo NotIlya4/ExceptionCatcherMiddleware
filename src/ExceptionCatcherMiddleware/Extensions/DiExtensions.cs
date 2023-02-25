@@ -30,7 +30,7 @@ public static class DiExtensions
     }
 
     private static void AddAllUsersMappersToServiceCollection(this IServiceCollection serviceCollection,
-        ICollection<ReflectionBundle> mapperTypes)
+        ICollection<IReflectionBundle> mapperTypes)
     {
         foreach (var mapperType in mapperTypes)
         {

@@ -4,6 +4,6 @@ namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.DispatcherDependencies;
 
 internal interface IReflectionBundlesProvider
 {
-    public ReflectionBundle? Get(Type exceptionType);
-    public ReflectionBundle? GetByFirstAvailableParent(Type? exceptionType);
+    public IReflectionBundle? Get(Type exceptionType);
+    public IReflectionBundle? GetByFirstAvailableParent(Type? exceptionType);
 }

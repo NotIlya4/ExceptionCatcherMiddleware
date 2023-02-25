@@ -19,7 +19,7 @@ internal class MappersDispatcher
     
     public BadResponse Map(Exception exception)
     {
-        ReflectionBundle? reflectionBundle = 
+        IReflectionBundle? reflectionBundle = 
             _reflectionBundlesProvider.GetByFirstAvailableParent(exception.GetType());
 
         if (reflectionBundle is null)

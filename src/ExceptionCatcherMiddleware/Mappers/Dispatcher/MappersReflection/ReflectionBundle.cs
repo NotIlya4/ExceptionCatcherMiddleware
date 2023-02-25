@@ -5,7 +5,7 @@ using Exception = System.Exception;
 
 namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
 
-internal class ReflectionBundle
+internal class ReflectionBundle : IReflectionBundle
 {
     public Type MapperType { get; }
     public Type ExceptionTypeThatMapperMaps { get; }
