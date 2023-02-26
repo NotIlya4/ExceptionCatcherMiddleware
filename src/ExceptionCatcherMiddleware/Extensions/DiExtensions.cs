@@ -1,6 +1,5 @@
 ﻿using ExceptionCatcherMiddleware.Mappers.Dispatcher;
-using ExceptionCatcherMiddleware.Mappers.Dispatcher.DispatcherDependencies;
-using ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
+using ExceptionCatcherMiddleware.Mappers.Reflection;
 using ExceptionCatcherMiddleware.Options;
 using Microsoft.Extensions.DependencyInjection;
 

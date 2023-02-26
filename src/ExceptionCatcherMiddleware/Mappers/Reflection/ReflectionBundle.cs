@@ -3,7 +3,7 @@ using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
 using ExceptionCatcherMiddleware.Mappers.Exceptions;
 using Exception = System.Exception;
 
-namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
+namespace ExceptionCatcherMiddleware.Mappers.Reflection;
 
 internal class ReflectionBundle : IReflectionBundle
 {

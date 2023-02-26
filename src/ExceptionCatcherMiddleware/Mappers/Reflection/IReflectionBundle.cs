@@ -1,6 +1,6 @@
 ﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
 
-namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
+namespace ExceptionCatcherMiddleware.Mappers.Reflection;
 
 internal interface IReflectionBundle
 {

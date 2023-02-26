@@ -3,7 +3,7 @@ using System.Reflection;
 using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
 using ExceptionCatcherMiddleware.Mappers.Exceptions;
 
-namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
+namespace ExceptionCatcherMiddleware.Mappers.Reflection;
 
 internal delegate BadResponse CompiledMapperMethod(object mapperInstance, Exception exception);
 internal class MapperMethodCompiler

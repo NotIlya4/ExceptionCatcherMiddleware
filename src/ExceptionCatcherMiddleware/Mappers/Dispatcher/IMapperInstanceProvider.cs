@@ -1,4 +1,4 @@
-﻿namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.DispatcherDependencies;
+﻿namespace ExceptionCatcherMiddleware.Mappers.Dispatcher;
 
 internal interface IMapperInstanceProvider
 {

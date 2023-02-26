@@ -1,5 +1,5 @@
 ﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
-using ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
+using ExceptionCatcherMiddleware.Mappers.Reflection;
 
 namespace ExceptionCatcherMiddleware.Options;
 

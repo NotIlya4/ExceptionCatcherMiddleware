@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace ExceptionCatcherMiddleware.Mappers.Dispatcher.DispatcherDependencies;
+﻿namespace ExceptionCatcherMiddleware.Mappers.Dispatcher;
 
 internal class ServiceProviderWrapper : IMapperInstanceProvider
 {

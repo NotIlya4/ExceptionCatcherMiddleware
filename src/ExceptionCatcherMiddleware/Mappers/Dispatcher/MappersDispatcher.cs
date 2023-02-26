@@ -1,7 +1,6 @@
 ﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
-using ExceptionCatcherMiddleware.Mappers.Dispatcher.DispatcherDependencies;
-using ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
 using ExceptionCatcherMiddleware.Mappers.Exceptions;
+using ExceptionCatcherMiddleware.Mappers.Reflection;
 
 namespace ExceptionCatcherMiddleware.Mappers.Dispatcher;
 
