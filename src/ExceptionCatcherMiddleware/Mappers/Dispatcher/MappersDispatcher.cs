@@ -18,13 +18,8 @@ internal class MappersDispatcher
     
     public BadResponse Map(Exception exception)
     {
-        IReflectionBundle? reflectionBundle = 
+        IReflectionBundle reflectionBundle = 
             _reflectionBundlesProvider.GetByFirstAvailableParent(exception.GetType());
-
-        if (reflectionBundle is null)
-        {
-            throw new MappingException($"Mapper not found for {exception.GetType().FullName} and all its parents");
-        }
         
         object? mapperInstance = _mapperInstanceProvider.GetMapperInstanceByType(reflectionBundle.MapperType);
         

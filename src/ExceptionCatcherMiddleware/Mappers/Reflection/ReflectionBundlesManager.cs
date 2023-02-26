@@ -28,19 +28,27 @@ internal class ReflectionBundlesManager : IReflectionBundlesProvider
         return _dictionary.GetValueOrDefault(exceptionType);
     }
 
-    public IReflectionBundle? GetByFirstAvailableParent(Type? exceptionType)
+    public IReflectionBundle GetByFirstAvailableParent(Type exceptionType)
     {
-        while (exceptionType is not null)
+        if (!exceptionType.IsAssignableTo(typeof(Exception)))
         {
-            var reflectionBundle = Get(exceptionType);
+            throw new TypeValidationException(exceptionType, $"Type must be inherited from Exception");
+        }
+
+        Type? parentExceptionType = exceptionType;
+        
+        while (parentExceptionType is not null)
+        {
+            var reflectionBundle = Get(parentExceptionType);
             if (reflectionBundle is not null)
             {
                 return reflectionBundle;
             }
-            exceptionType = exceptionType.BaseType;
+            parentExceptionType = parentExceptionType.BaseType;
         }
 
-        return null;
+        throw new ExceptionCatcherMiddlewareException
+            ("Something went wrong because bundle manager have to contain bundle at least for Exception but it doesn't");
     }
 
     public ICollection<IReflectionBundle> GetAllMapperTypes()
