@@ -1,22 +1,13 @@
 ﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
-using ExceptionCatcherMiddleware.Mappers.Dispatcher.MappersReflection;
 using ExceptionCatcherMiddleware.Mappers.Exceptions;
-using Moq;
+using ExceptionCatcherMiddleware.Mappers.Reflection;
 
-namespace ExceptionCatcherMiddleware.UnitTests.Mappers.MappersReflection;
+namespace ExceptionCatcherMiddleware.UnitTests.Mappers.Reflection.ReflectionBundleTests;
 
-public class ReflectionBundleTests
+public class ConstructorTests
 {
-    private Mock<IExceptionMapper<Exception>> _exceptionMapper = null!;
-    
-    [SetUp]
-    public void SetUp()
-    {
-        _exceptionMapper = new();
-    }
-
     [Test]
-    public void Constructor_TypeWithoutMapMethod_ThrowTypeValidationException()
+    public void TypeWithoutMapMethod_ThrowTypeValidationException()
     {
         Assert.That(
             () => new ReflectionBundle(typeof(object)),
@@ -24,7 +15,7 @@ public class ReflectionBundleTests
     }
 
     [Test]
-    public void Constructor_TypeWithTwoArgumentsInMapMethod_ThrowTypeValidationException()
+    public void TypeWithTwoArgumentsInMapMethod_ThrowTypeValidationException()
     {
         Assert.That(
             () => new ReflectionBundle(typeof(IReflectionBundleWithMapMethodThatHasMoreThanOneParameter)),
@@ -32,7 +23,7 @@ public class ReflectionBundleTests
     }
 
     [Test]
-    public void Constructor_TypeWithWrongResponse_ThrowTypeValidationException()
+    public void TypeWithWrongResponse_ThrowTypeValidationException()
     {
         Assert.That(
             () => new ReflectionBundle(typeof(IReflectionBundleWithWrongResponse)),
@@ -40,7 +31,7 @@ public class ReflectionBundleTests
     }
 
     [Test]
-    public void Constructor_TypeWithWrongParameterType_ThrowTypeValidationException()
+    public void TypeWithWrongParameterType_ThrowTypeValidationException()
     {
         Assert.That(
             () => new ReflectionBundle(typeof(IReflectionBundleWithWrongParameterType)),
@@ -48,21 +39,27 @@ public class ReflectionBundleTests
     }
 
     [Test]
-    public void Constructor_GoodTypeWithExceptionInParameter_SuccessfullyConstruct()
+    public void GoodTypeWithExceptionInParameter_SuccessfullyConstruct()
     {
         new ReflectionBundle(typeof(IExceptionMapper<Exception>));
     }
     
     [Test]
-    public void Constructor_GoodTypeWithArgumentExceptionInParameter_SuccessfullyConstruct()
+    public void GoodTypeWithArgumentExceptionInParameter_SuccessfullyConstruct()
     {
         new ReflectionBundle(typeof(IExceptionMapper<ArgumentException>));
     }
     
     [Test]
-    public void Constructor_GoodTypeWithArgumentOutOfRangeExceptionInParameter_SuccessfullyConstruct()
+    public void GoodTypeWithArgumentOutOfRangeExceptionInParameter_SuccessfullyConstruct()
     {
         new ReflectionBundle(typeof(IExceptionMapper<ArgumentOutOfRangeException>));
+    }
+    
+    [Test]
+    public void GoodTypeWithNullReferenceExceptionInParameter_SuccessfullyConstruct()
+    {
+        new ReflectionBundle(typeof(IExceptionMapper<NullReferenceException>));
     }
 }
 
