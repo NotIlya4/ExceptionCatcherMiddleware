@@ -34,7 +34,7 @@ internal class ExceptionCatcherMiddleware : IMiddleware
             ActionContext actionContext = new();
             actionContext.HttpContext = context;
             
-            ObjectResult objectResult = new(badResponse.ExceptionDto);
+            ObjectResult objectResult = new(badResponse.ResponseDto);
             objectResult.StatusCode = badResponse.StatusCode;
             await objectResult.ExecuteResultAsync(actionContext);
         }

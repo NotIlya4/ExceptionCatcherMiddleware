@@ -9,7 +9,7 @@ internal class DefaultExceptionMapper : IExceptionMapper<Exception>
         return new BadResponse()
         {
             StatusCode = StatusCodes.Status500InternalServerError,
-            ExceptionDto = new
+            ResponseDto = new
             {
                 Title = "Internal exception",
                 Detail = exception.Message

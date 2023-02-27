@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionCatcherMiddleware"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionCatcherMiddleware.Tests", "ExceptionCatcherMiddleware.Tests\ExceptionCatcherMiddleware.Tests.csproj", "{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionCatcherMiddleware.Demo", "ExceptionCatcherMiddleware.Demo\ExceptionCatcherMiddleware.Demo.csproj", "{4D363DA3-DFE5-40E5-AFEE-DF48D7D6F12D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B06CD191-FC9F-4BEF-A6E0-D49A5E68FA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D363DA3-DFE5-40E5-AFEE-DF48D7D6F12D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D363DA3-DFE5-40E5-AFEE-DF48D7D6F12D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D363DA3-DFE5-40E5-AFEE-DF48D7D6F12D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D363DA3-DFE5-40E5-AFEE-DF48D7D6F12D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

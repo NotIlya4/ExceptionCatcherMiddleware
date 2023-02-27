@@ -1,6 +1,6 @@
 ﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
 
-namespace ExceptionCatcherMiddleware.UnitTests.Extensions.DiExtensions;
+namespace ExceptionCatcherMiddleware.Demo.ExceptionMappers;
 
 public class ArgumentExceptionMapper : IExceptionMapper<ArgumentException>
 {
@@ -11,7 +11,8 @@ public class ArgumentExceptionMapper : IExceptionMapper<ArgumentException>
             StatusCode = 400,
             ResponseDto = new
             {
-                A = "a"
+                Title = "Argument Exception occurred during execution",
+                Detail = exception.Message
             }
         };
     }
