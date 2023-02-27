@@ -4,6 +4,11 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>NotIlya</Authors>
+    <Description>Little package that helps you catch exception in middleware and then map it to status code and dto that will be sent to client</Description>
+    <Copyright>MIT</Copyright>
+    <RepositoryUrl>https://github.com/NotIlya4/ExceptionCatcherMiddleware</RepositoryUrl>
+    <PackageTags>Middleware, Exception, Catch exception, Exception catcher, Exception catcher middleware, ExceptionCatcherMiddleware, Error, Error handling, Error handler</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
