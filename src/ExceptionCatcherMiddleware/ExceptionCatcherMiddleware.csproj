@@ -5,10 +5,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Authors>NotIlya</Authors>
-    <Description>Little package that helps you catch exception in middleware and then map it to status code and dto that will be sent to client</Description>
+    <Description>This is a small package that provides a simple way to catch exceptions in middleware and map them to the appropriate status code and DTO that will be sent to the client. It integrated with ASP.NET content negotiation, so you don't need to worry about serializing the DTO.</Description>
     <Copyright>MIT</Copyright>
     <RepositoryUrl>https://github.com/NotIlya4/ExceptionCatcherMiddleware</RepositoryUrl>
     <PackageTags>Middleware, Exception, Catch exception, Exception catcher, Exception catcher middleware, ExceptionCatcherMiddleware, Error, Error handling, Error handler</PackageTags>
+    <Title>ExceptionCatcherMiddleware</Title>
+    <Product>ExceptionCatcherMiddleware</Product>
+    <PackageId>ExceptionCatcherMiddleware</PackageId>
+    <Version>1.0.0</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +35,13 @@
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
       <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
     </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
