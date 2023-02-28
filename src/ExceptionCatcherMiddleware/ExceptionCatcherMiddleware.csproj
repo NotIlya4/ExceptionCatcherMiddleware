@@ -8,13 +8,14 @@
     <Description>This is a small package that provides a simple way to catch exceptions in middleware and map them to the appropriate status code and DTO that will be sent to the client. It integrated with ASP.NET content negotiation, so you don't need to worry about serializing the DTO.</Description>
     <Copyright>MIT</Copyright>
     <RepositoryUrl>https://github.com/NotIlya4/ExceptionCatcherMiddleware</RepositoryUrl>
-    <PackageTags>Middleware, Exception, Catch exception, Exception catcher, Exception catcher middleware, ExceptionCatcherMiddleware, Error, Error handling, Error handler</PackageTags>
+    <PackageTags>Middleware, Exception, Catch, ExceptionCatcherMiddleware, ExceptionMiddleware, Error, ErrorHandling, ErrorHandler</PackageTags>
     <Title>ExceptionCatcherMiddleware</Title>
     <Product>ExceptionCatcherMiddleware</Product>
     <PackageId>ExceptionCatcherMiddleware</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.0.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>midjourney_logo_128.jpg</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -38,6 +39,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\..\assets\midjourney_logo_128.jpg">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\..\README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
