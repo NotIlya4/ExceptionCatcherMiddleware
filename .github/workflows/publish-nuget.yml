@@ -20,7 +20,7 @@ jobs:
 
       - name: Extract version from tag
         id: extract_version
-        run: echo "::set-output name=version::${GITHUB_REF##*/}"
+        run: echo "::set-output name=version::${GITHUB_REF#refs/tags/v}"
 
       - name: Build and publish
         env:
