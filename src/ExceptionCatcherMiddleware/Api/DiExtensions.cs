@@ -12,7 +12,6 @@ public static class DiExtensions
     {
         var manager = new ReflectionBundlesManager();
         manager.Set<ExceptionMapper>();
-        manager.Set<InvalidOperationExceptionMapper>();
         
         var options = new ExceptionMiddlewareOptions(manager, services);
         if (action is not null)
