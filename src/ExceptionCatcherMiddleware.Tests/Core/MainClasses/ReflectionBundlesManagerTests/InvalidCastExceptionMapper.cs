@@ -1,17 +1,17 @@
 ﻿using ExceptionCatcherMiddleware.Core.DefaultMappers;
 using ExceptionCatcherMiddleware.Core.Models;
 
-namespace ExceptionCatcherMiddleware.Demo.ExceptionMappers;
+namespace ExceptionCatcherMiddleware.UnitTests.Core.MainClasses.ReflectionBundlesManagerTests;
 
-public class ArgumentExceptionMapper : IExceptionMapper<ArgumentException>
+public class InvalidCastExceptionMapper : IExceptionMapper<InvalidCastException>
 {
-    public BadResponse Map(ArgumentException exception)
+    public BadResponse Map(InvalidCastException exception)
     {
         return BadResponse.FromObject(
             statusCode: 400,
             responseDto: new
             {
-                Title = "Argument Exception occurred during execution",
+                Title = "Invalid cast exception",
                 Detail = exception.Message
             });
     }

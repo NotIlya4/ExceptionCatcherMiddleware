@@ -11,41 +11,37 @@ or via the .NET Core CLI:
 $ dotnet add package ExceptionCatcherMiddleware
 ```
 ## Getting started
-To add your own mapper you need to create class that implements `IExceptionMapper<T>` where T represents the type of exception that the mapper will map.
-Example for ArgumentException:
+To add your own mapper you need to create class that implements `IExceptionMapper<T>` where `T` represents the type of exception that the mapper will map.
+Example for `ArgumentException`:
 ```csharp
-using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
-
 public class ArgumentExceptionMapper : IExceptionMapper<ArgumentException>
 {
     public BadResponse Map(ArgumentException exception)
     {
-        return new BadResponse()
-        {
-            StatusCode = 400,
-            ResponseDto = new
+        return BadResponse.FromObject(
+            statusCode: 400,
+            responseDto: new
             {
                 Title = "Argument Exception occurred during execution",
                 Detail = exception.Message
-            }
-        };
+            });
     }
 }
 ```
-Exception mappers should map from `TException` to `BadResponse`. `BadResponse` class is utilized by the middleware. 
-* `StatusCode` will be applied to response's status code.
-* `ResponseDto` will be used as the response body. Since the package is connected to ASP.NET content negotiation, the framework will handle the serialization of the DTO.
+`BadResponse` has different factory methods:
+- `FromObject` Use it when you want to apply ASP.NET's content negotiation.
+- `FromRaw` Use it when you want to serialize response yourself without ASP.NET content negotiation.
+- `FromJson` Its just a `FromRaw` but with some predefined values.
+
+You can easily create your own factory methods using extension methods with `FromObject` or `FromRaw`.
 
 ### Adding mapper to middleware
 ```csharp
 builder.Services.AddExceptionCatcherMiddlewareServices(optionsBuilder =>
 {
-    optionsBuilder.RegisterExceptionMapper<ArgumentException, ArgumentExceptionMapper>();
+    optionsBuilder.RegisterExceptionMapper<ArgumentExceptionMapper>();
 });
 ```
-This method has the following signature `RegisterExceptionMapper<TException, TMapper>`.
-* `TException` is a type of exception that mapper will map.
-* `TMapper` is a type of mapper for that exception
 
 Note: `TMapper` must be bound strictly to `TException`. For instance, if your mapper implements `IExceptionMapper<ArgumentException>`, you can register it only for `ArgumentException` and not for `ArgumentOutOfRangeException`
 
@@ -53,4 +49,4 @@ Note: `TMapper` must be bound strictly to `TException`. For instance, if your ma
 ```csharp
 app.UseExceptionCatcherMiddleware();
 ```
-That's it! Now, any `ArgumentException` and its derived exceptions, such as _ArgumentOutOfRangeException_, _ArgumentNullException_, and so on, will be mapped by the registered mapper. If an exception occurs that doesn't inherit from `ArgumentException`, it will be mapped by the default mapper for `Exception`. You can override this by registering your own `IExceptionMapper<Exception>`.
+That's it! Now, any `ArgumentException` and its derived exceptions, such as _ArgumentOutOfRangeException_, _ArgumentNullException_, and so on, will be mapped by the registered mapper, I mean it works just like try catch block. If an exception occurs that doesn't inherit from `ArgumentException`, it will be mapped by the default mapper for `Exception`. You can override this by registering your own `IExceptionMapper<Exception>`.

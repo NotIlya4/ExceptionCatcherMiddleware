@@ -6,21 +6,21 @@ namespace ExceptionCatcherMiddleware.Demo.Controllers;
 public class MiddlewareTestController : ControllerBase
 {
     [HttpGet]
-    [Route("exception")]
+    [Route("exception/message/{exceptionMessage}")]
     public ActionResult ThrowException(string exceptionMessage)
     {
         throw new Exception(exceptionMessage);
     }
     
     [HttpGet]
-    [Route("argumentException")]
+    [Route("argumentException/message/{exceptionMessage}")]
     public ActionResult ThrowArgumentException(string exceptionMessage)
     {
         throw new ArgumentException(exceptionMessage);
     }
 
     [HttpGet]
-    [Route("argumentOutOfRangeException")]
+    [Route("argumentOutOfRangeException/message/{exceptionMessage}")]
     public ActionResult ThrowArgumentOutOfRangeException(string exceptionMessage)
     {
         throw new ArgumentOutOfRangeException(exceptionMessage);
