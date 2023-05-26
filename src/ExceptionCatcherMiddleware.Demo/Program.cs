@@ -1,5 +1,5 @@
+using ExceptionCatcherMiddleware.Api;
 using ExceptionCatcherMiddleware.Demo.ExceptionMappers;
-using ExceptionCatcherMiddleware.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +10,8 @@ builder.Services.AddSwaggerGen();
 // Adding your own mappers
 builder.Services.AddExceptionCatcherMiddlewareServices(optionsBuilder =>
 {
-    optionsBuilder.RegisterExceptionMapper<Exception, ExceptionMapper>();
-    optionsBuilder.RegisterExceptionMapper<ArgumentException, ArgumentExceptionMapper>();
+    optionsBuilder.RegisterExceptionMapper<ExceptionMapper>();
+    optionsBuilder.RegisterExceptionMapper<ArgumentExceptionMapper>();
 });
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
+﻿using ExceptionCatcherMiddleware.Core.DefaultMappers;
+using ExceptionCatcherMiddleware.Core.Models;
 
 namespace ExceptionCatcherMiddleware.Demo.ExceptionMappers;
 
@@ -6,14 +7,12 @@ public class ArgumentExceptionMapper : IExceptionMapper<ArgumentException>
 {
     public BadResponse Map(ArgumentException exception)
     {
-        return new BadResponse()
-        {
-            StatusCode = 400,
-            ResponseDto = new
+        return BadResponse.FromObject(
+            statusCode: 400,
+            responseDto: new
             {
                 Title = "Argument Exception occurred during execution",
                 Detail = exception.Message
-            }
-        };
+            });
     }
 }

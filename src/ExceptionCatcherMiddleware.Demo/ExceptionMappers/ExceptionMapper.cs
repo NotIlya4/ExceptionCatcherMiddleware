@@ -1,4 +1,5 @@
-﻿using ExceptionCatcherMiddleware.Mappers.CreatingCustomMappers;
+﻿using ExceptionCatcherMiddleware.Core.DefaultMappers;
+using ExceptionCatcherMiddleware.Core.Models;
 
 namespace ExceptionCatcherMiddleware.Demo.ExceptionMappers;
 
@@ -6,13 +7,11 @@ public class ExceptionMapper : IExceptionMapper<Exception>
 {
     public BadResponse Map(Exception exception)
     {
-        return new BadResponse()
-        {
-            StatusCode = 500,
-            ResponseDto = new
+        return BadResponse.FromObject(
+            statusCode: 500,
+            responseDto: new
             {
                 Message = "Internal exception"
-            }
-        };
+            });
     }
 }
