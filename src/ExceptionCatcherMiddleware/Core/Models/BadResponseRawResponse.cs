@@ -6,14 +6,14 @@ internal record BadResponseRawResponse
 {
     public int StatusCode { get; }
     public string RawResponse { get; }
-    public Encoding? Encoding { get; }
     public string ContentType { get; }
+    public Encoding? Encoding { get; }
 
-    public BadResponseRawResponse(int statusCode, string rawResponse, Encoding? encoding, string contentType)
+    public BadResponseRawResponse(int statusCode, string rawResponse, string contentType, Encoding? encoding = null)
     {
         StatusCode = statusCode;
         RawResponse = rawResponse;
-        Encoding = encoding;
         ContentType = contentType;
+        Encoding = encoding;
     }
 }

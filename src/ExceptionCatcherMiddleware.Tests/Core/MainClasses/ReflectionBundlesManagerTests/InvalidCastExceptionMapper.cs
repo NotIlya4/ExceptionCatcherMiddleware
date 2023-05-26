@@ -1,7 +1,7 @@
 ﻿using ExceptionCatcherMiddleware.Core.DefaultMappers;
 using ExceptionCatcherMiddleware.Core.Models;
 
-namespace ExceptionCatcherMiddleware.UnitTests.Core.ReflectionBundlesManager;
+namespace ExceptionCatcherMiddleware.UnitTests.Core.MainClasses.ReflectionBundlesManagerTests;
 
 public class InvalidCastExceptionMapper : IExceptionMapper<InvalidCastException>
 {
@@ -9,6 +9,10 @@ public class InvalidCastExceptionMapper : IExceptionMapper<InvalidCastException>
     {
         return BadResponse.FromObject(
             statusCode: 400,
-            responseDto: new object());
+            responseDto: new
+            {
+                Title = "Invalid cast exception",
+                Detail = exception.Message
+            });
     }
 }

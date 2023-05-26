@@ -21,7 +21,7 @@ public record BadResponse
     {
         _badResponseResponseDto = null;
         _badResponseRawResponse = badResponseRawResponse;
-        IsRaw = false;
+        IsRaw = true;
     }
 
     public static BadResponse FromObject(int statusCode, object responseDto)

@@ -4,10 +4,10 @@ namespace ExceptionCatcherMiddleware.Core.MainClasses;
 
 internal class GlobalExceptionMapper
 {
-    private readonly MapperInstanceProvider _mapperInstanceProvider;
+    private readonly IMapperInstanceProvider _mapperInstanceProvider;
     private readonly ReflectionBundlesManager _reflectionBundlesManager;
 
-    public GlobalExceptionMapper(MapperInstanceProvider mapperInstanceProvider,
+    public GlobalExceptionMapper(IMapperInstanceProvider mapperInstanceProvider,
         ReflectionBundlesManager reflectionBundlesManager)
     {
         _mapperInstanceProvider = mapperInstanceProvider;
@@ -28,6 +28,6 @@ internal class GlobalExceptionMapper
 
     private object GetMapper(ReflectionBundle reflectionBundle)
     {
-        return _mapperInstanceProvider.GetMapperInstanceByType(reflectionBundle.MapperType);
+        return _mapperInstanceProvider.Get(reflectionBundle.MapperType);
     }
 }

@@ -11,7 +11,8 @@ public class ExceptionMapper : IExceptionMapper<Exception>
             statusCode: 500,
             responseDto: new
             {
-                Message = "Internal exception"
+                Title = "Internal exception",
+                Detail = exception.Message
             });
     }
 }

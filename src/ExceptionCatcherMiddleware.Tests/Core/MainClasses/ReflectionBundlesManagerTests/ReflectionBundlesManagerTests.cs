@@ -1,7 +1,7 @@
 ﻿using ExceptionCatcherMiddleware.Core.DefaultMappers;
 using ExceptionCatcherMiddleware.Core.Models;
 
-namespace ExceptionCatcherMiddleware.UnitTests.Core.ReflectionBundlesManager;
+namespace ExceptionCatcherMiddleware.UnitTests.Core.MainClasses.ReflectionBundlesManagerTests;
 
 public class ReflectionBundlesManagerTests
 {

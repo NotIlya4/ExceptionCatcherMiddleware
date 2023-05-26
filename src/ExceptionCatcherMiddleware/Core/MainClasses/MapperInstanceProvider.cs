@@ -2,7 +2,7 @@
 
 namespace ExceptionCatcherMiddleware.Core.MainClasses;
 
-internal class MapperInstanceProvider
+internal class MapperInstanceProvider : IMapperInstanceProvider
 {
     private readonly IServiceProvider _services;
 
@@ -11,7 +11,7 @@ internal class MapperInstanceProvider
         _services = services;
     }
     
-    public object GetMapperInstanceByType(Type mapperInstanceType)
+    public object Get(Type mapperInstanceType)
     {
         return _services.GetRequiredService(mapperInstanceType);
     }
