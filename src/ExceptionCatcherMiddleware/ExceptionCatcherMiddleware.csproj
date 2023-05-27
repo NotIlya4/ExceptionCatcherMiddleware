@@ -12,7 +12,6 @@
     <Title>ExceptionCatcherMiddleware</Title>
     <Product>ExceptionCatcherMiddleware</Product>
     <PackageId>ExceptionCatcherMiddleware</PackageId>
-    <Version>1.0.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>midjourney_logo_128.jpg</PackageIcon>
