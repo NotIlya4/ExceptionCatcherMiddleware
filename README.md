@@ -1,4 +1,4 @@
-# ExceptionCatcherMiddleware
+# ExceptionCatcherMiddleware ![NuGet Version](http://img.shields.io/nuget/v/ExceptionCatcherMiddleware.svg?style=flat)
 This is a small package that provides a simple way to catch exceptions in middleware and map them to the appropriate status code and DTO that will be sent to the client. It integrated with ASP.NET content negotiation, so you don't need to worry about serializing the DTO.
 ## Instalation
 ExceptionCatcherMiddleware is [available on NuGet](https://www.nuget.org/packages/ExceptionCatcherMiddleware) and can be installed via the below commands:
